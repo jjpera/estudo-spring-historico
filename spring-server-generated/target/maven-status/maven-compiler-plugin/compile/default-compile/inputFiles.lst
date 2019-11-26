@@ -1,0 +1,15 @@
+C:\svn\estudo\spring-server-generated\src\main\java\io\swagger\configuration\HomeController.java
+C:\svn\estudo\spring-server-generated\src\main\java\io\swagger\configuration\JacksonConfiguration.java
+C:\svn\estudo\spring-server-generated\src\main\java\io\swagger\constants\Sistema.java
+C:\svn\estudo\spring-server-generated\src\main\java\io\swagger\Swagger2SpringBoot.java
+C:\svn\estudo\spring-server-generated\src\main\java\io\swagger\model\Historico.java
+C:\svn\estudo\spring-server-generated\src\main\java\io\swagger\model\RetornoHistorico.java
+C:\svn\estudo\spring-server-generated\src\main\java\io\swagger\repository\HistoricoRepository.java
+C:\svn\estudo\spring-server-generated\src\main\java\io\swagger\service\HistoricoService.java
+C:\svn\estudo\spring-server-generated\src\main\java\io\swagger\api\HistoricoApiController.java
+C:\svn\estudo\spring-server-generated\src\main\java\io\swagger\configuration\CustomInstantDeserializer.java
+C:\svn\estudo\spring-server-generated\src\main\java\io\swagger\constants\TipoHistorico.java
+C:\svn\estudo\spring-server-generated\src\main\java\io\swagger\model\Retorno.java
+C:\svn\estudo\spring-server-generated\src\main\java\io\swagger\configuration\SwaggerDocumentationConfig.java
+C:\svn\estudo\spring-server-generated\src\main\java\io\swagger\api\HistoricoApi.java
+C:\svn\estudo\spring-server-generated\src\main\java\io\swagger\RFC3339DateFormat.java

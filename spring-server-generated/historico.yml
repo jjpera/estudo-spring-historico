@@ -1,0 +1,183 @@
+openapi: 3.0.1
+info:
+  title: Historico
+  description: Controle do Historico
+  version: 1.0.0
+servers:
+- url: http://localhost:8081/historico
+tags:
+- name: Historico
+paths:
+  /historico:
+    get:
+      tags:
+        - Historico
+      summary: Busca Historicos
+      description: Busca historicos.
+      operationId: buscarHistorico
+      parameters:
+      - name: tipoHistorico
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/TipoHistorico'
+      - name: sistema
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/Sistema'
+      - name: pagina
+        in: query
+        required: false
+        schema:
+          type: integer
+      - name: qtdePagina
+        in: query
+        required: false
+        schema:
+          type: integer
+      responses:
+        200:
+          description: Historico cadastrado com sucesso!
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RetornoHistorico'
+        500:
+          description: Erro no servidor.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RetornoHistorico'
+    post:
+      tags:
+        - Historico
+      summary: Cadastra Historico
+      description: Cadastra um historico.
+      operationId: cadastrarHistorico
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Historico'
+        required: true
+      responses:
+        200:
+          description: Historico cadastrado com sucesso!
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RetornoHistorico'
+        500:
+          description: Erro no servidor.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RetornoHistorico'
+  /historico/{codigo}:
+    put:
+      tags:
+      - Historico
+      summary: Altera Historico
+      description: Altera o valor do Historico existente.
+      operationId: alterarHistorico
+      parameters:
+      - name: codigo
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Historico'
+        required: true
+      responses:
+        200:
+          description: Alteração efeturada com sucesso!
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RetornoHistorico'
+        500:
+          description: Erro no servidor.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RetornoHistorico'
+    delete:
+      tags:
+      - Historico
+      summary: Exclui o historico
+      description: Exclui o historico existente.
+      operationId: excluirHistorico
+      parameters:
+      - name: codigo
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: Exclusão efetuada com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RetornoHistorico'
+        500:
+          description: Erro no servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RetornoHistorico'
+components:
+  schemas:
+    Retorno:
+      type: object
+      properties:
+        codigo:
+          type: integer
+          format: int64
+          example: 234
+        descricao:
+          type: string
+        registros:
+          type: integer
+        pagina:
+          type: integer
+        qtdePagina:
+          type: integer
+    RetornoHistorico:
+      allOf:
+        - $ref: '#/components/schemas/Retorno'
+        - type: object
+          properties:
+            listaHistoricos:
+              type: array
+              items:
+                $ref: '#/components/schemas/Historico'
+    Historico:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 234
+        data:
+          type: string
+          format: date-time
+        tipo:
+          $ref: '#/components/schemas/TipoHistorico'
+        sistema:
+          $ref: '#/components/schemas/Sistema'
+        descricao:
+          type: string
+    TipoHistorico:
+      type: string
+      enum: ['post', 'put', 'delete', 'get']
+    Sistema:
+      type: string
+      enum: ['linha', 'banda', 'tv', 'historico']
