@@ -1,8 +1,11 @@
 # estudo-spring-historico
 
 -- rodando app spring
-docker build -f Dockerfile -t spring-server-generated .
-docker run -e "SPRING_PROFILES_ACTIVE=dev" -p 8081:8081 -t spring-server-generated
+docker build -f Dockerfile -t jjpera/estudo-spring-historico .
+docker run -p 8081:8081 -t jjpera/estudo-spring-historico
+
+# para Docker toolbox
+docker run -p 8081:8081 -e DB_DOMAIN=192.168.99.100 -t jjpera/estudo-spring-historico
 
 dependencias 
 -- rodando mongoDB
